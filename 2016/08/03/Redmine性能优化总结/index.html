@@ -84,12 +84,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZenPHP">
-<meta property="og:url" content="https://zen-php.github.io/archives/2016/07/index.html">
+<meta name="description" content="1、Web服务器（1）Redmine访问缓慢原因：
+Redmine启动时默认使用webrick web服务器，由于webrick是单进程单线程模式（仅用于测试开发）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redmine性能优化总结">
+<meta property="og:url" content="https://zen-php.github.io/2016/08/03/Redmine性能优化总结/index.html">
 <meta property="og:site_name" content="ZenPHP">
+<meta property="og:description" content="1、Web服务器（1）Redmine访问缓慢原因：
+Redmine启动时默认使用webrick web服务器，由于webrick是单进程单线程模式（仅用于测试开发）">
+<meta property="og:updated_time" content="2016-08-02T19:39:27.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZenPHP">
+<meta name="twitter:title" content="Redmine性能优化总结">
+<meta name="twitter:description" content="1、Web服务器（1）Redmine访问缓慢原因：
+Redmine启动时默认使用webrick web服务器，由于webrick是单进程单线程模式（仅用于测试开发）">
 
 
 
@@ -110,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="https://zen-php.github.io/archives/2016/07/"/>
+  <link rel="canonical" href="https://zen-php.github.io/2016/08/03/Redmine性能优化总结/"/>
 
-  <title> 归档 | ZenPHP </title>
+  <title> Redmine性能优化总结 | ZenPHP </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -241,66 +248,128 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 2 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Redmine性能优化总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T03:33:03+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <h3 id="1、Web服务器"><a href="#1、Web服务器" class="headerlink" title="1、Web服务器"></a>1、Web服务器</h3><h4 id="（1）Redmine访问缓慢原因："><a href="#（1）Redmine访问缓慢原因：" class="headerlink" title="（1）Redmine访问缓慢原因："></a>（1）Redmine访问缓慢原因：</h4><blockquote>
+<p>Redmine启动时默认使用webrick web服务器，由于webrick是单进程单线程模式（仅用于测试开发）<a id="more"></a>，一次只能处理一个请求，因此当有请求阻塞时，任务请求就只能排队，导致Redmine在小范围局域网内也可能出现访问缓慢；</p>
+</blockquote>
+<h4 id="（2）解决方案（更换Web服务器）："><a href="#（2）解决方案（更换Web服务器）：" class="headerlink" title="（2）解决方案（更换Web服务器）："></a>（2）解决方案（更换Web服务器）：</h4><blockquote>
+<p>①Mongrel服务器组件<br>    简介：一种针对Ruby的快速HTTP服务器，支持集群，相对于Webrick，其速度更快，并且支持并发访问；<br>    使用：替换服务器为“Mongrel”（<code>gem install mongrel --pre</code>）;<br>    修改redmine下gemfile文件（在gemfile中加入<code>gem &#39;mongrel&#39;,&#39;~&gt; 1.2.0.pre2&#39;</code>）；<br>    删除gemfile.lock文件，重新执行（<code>bundle install</code>）；<br>    执行运行（<code>ruby script/rails server mongrel -e production</code>）<br>  ②nginx+Passenger服务器方案；</p>
+</blockquote>
+<h3 id="2、邮件配置"><a href="#2、邮件配置" class="headerlink" title="2、邮件配置"></a>2、邮件配置</h3><h4 id="（1）Redmine新建或者更新问题时加载缓慢"><a href="#（1）Redmine新建或者更新问题时加载缓慢" class="headerlink" title="（1）Redmine新建或者更新问题时加载缓慢"></a>（1）Redmine<code>新建或者更新问题</code>时加载缓慢</h4><blockquote>
+<p>用户在新建问题或者更新问题时会触发Redmine发送电子邮件，而且此系统操作是同步响应的，因此需要等到邮件发送成功后才会返回；</p>
+</blockquote>
+<p>（2）解决方案：</p>
+<blockquote>
+<p>①进入redmine-&gt;htdocs-&gt;config目录下；<br>②编辑configuration.yml文件；<br>③找到delivery_method:smtp，将参数smtp修改为async_smtp，保存并推出；<br>④重启服务器。<br>完成上述操作后，重新打开Redmine，测试<code>新建问题</code>或者<code>更新问题</code></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/30/hello-world/" rel="next" title="MySQL中文编码问题">
+                <i class="fa fa-chevron-left"></i> MySQL中文编码问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
         </div>
       
-      
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/30/hello-world/" itemprop="url">
-              
-                <span itemprop="name">MySQL中文编码问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-30T16:30:25+08:00"
-              content="2016-07-30" >
-          07-30
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -308,6 +377,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -327,8 +400,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://toutiaoio.qiniudn.com/user/983a17fccb2e4be7a0dcf3f7f248feff/thumb"
@@ -407,6 +489,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Web服务器"><span class="nav-number">1.</span> <span class="nav-text">1、Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）Redmine访问缓慢原因："><span class="nav-number">1.1.</span> <span class="nav-text">（1）Redmine访问缓慢原因：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）解决方案（更换Web服务器）："><span class="nav-number">1.2.</span> <span class="nav-text">（2）解决方案（更换Web服务器）：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、邮件配置"><span class="nav-number">2.</span> <span class="nav-text">2、邮件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）Redmine新建或者更新问题时加载缓慢"><span class="nav-number">2.1.</span> <span class="nav-text">（1）Redmine新建或者更新问题时加载缓慢</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -503,11 +596,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
