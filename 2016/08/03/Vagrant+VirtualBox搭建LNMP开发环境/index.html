@@ -94,12 +94,14 @@
 <meta property="og:description" content="标签（空格分隔）： 工具
 
 经历过windows系统下WAMP等集成开发环境和VirtualBox虚拟机运行Linux系统开发之后，发现Vagrant+virtualbox搭建PHP运行环境是比较好的">
-<meta property="og:updated_time" content="2016-08-03T16:02:48.201Z">
+<meta property="og:image" content="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221">
+<meta property="og:updated_time" content="2016-08-08T20:31:42.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vagrant+VirtualBox搭建LNMP开发环境">
 <meta name="twitter:description" content="标签（空格分隔）： 工具
 
 经历过windows系统下WAMP等集成开发环境和VirtualBox虚拟机运行Linux系统开发之后，发现Vagrant+virtualbox搭建PHP运行环境是比较好的">
+<meta name="twitter:image" content="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221">
 
 
 
@@ -315,13 +317,13 @@
         <p>标签（空格分隔）： 工具</p>
 <hr>
 <p><strong>经历过windows系统下WAMP等集成开发环境和VirtualBox虚拟机运行Linux系统开发之后，发现Vagrant+virtualbox搭建PHP运行环境是比较好的<a id="more"></a></strong></p>
-<h1 id="一、资源下载"><a href="#一、资源下载" class="headerlink" title="一、资源下载"></a>一、资源下载</h1><h2 id="（一）下载VirtualBox"><a href="#（一）下载VirtualBox" class="headerlink" title="（一）下载VirtualBox"></a>（一）下载VirtualBox</h2><ul>
+<h1 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h1><h2 id="（一）下载VirtualBox"><a href="#（一）下载VirtualBox" class="headerlink" title="（一）下载VirtualBox"></a>（一）下载VirtualBox</h2><ul>
 <li>官方下载：<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">VirtualBox</a><h2 id="（二）下载Vagrant"><a href="#（二）下载Vagrant" class="headerlink" title="（二）下载Vagrant"></a>（二）下载Vagrant</h2></li>
 <li>官方下载：<a href="https://www.vagrantup.com/downloads.html" target="_blank" rel="external">Vagrant</a><h2 id="（三）下载系统镜像"><a href="#（三）下载系统镜像" class="headerlink" title="（三）下载系统镜像"></a>（三）下载系统镜像</h2></li>
 <li>官方下载：<a href="http://www.vagrantbox.es/" target="_blank" rel="external">VagrantBox</a></li>
 <li>推荐版本：<a href="https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" target="_blank" rel="external">Official Ubuntu 12.04 daily Cloud Image amd64 (VirtualBox 4.1.12)</a></li>
 </ul>
-<h1 id="二、安装配置"><a href="#二、安装配置" class="headerlink" title="二、安装配置"></a>二、安装配置</h1><h2 id="（一）安装"><a href="#（一）安装" class="headerlink" title="（一）安装"></a>（一）安装</h2><h3 id="1、安装VirtualBox-Vagrant"><a href="#1、安装VirtualBox-Vagrant" class="headerlink" title="1、安装VirtualBox+Vagrant"></a>1、安装VirtualBox+Vagrant</h3><p>PS:<em>安装vagrant之后需要重启电脑完成环境变量设置等配置</em></p>
+<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><h2 id="（一）安装"><a href="#（一）安装" class="headerlink" title="（一）安装"></a>（一）安装</h2><h3 id="1、安装VirtualBox-Vagrant"><a href="#1、安装VirtualBox-Vagrant" class="headerlink" title="1、安装VirtualBox+Vagrant"></a>1、安装VirtualBox+Vagrant</h3><p>PS:<em>安装vagrant之后需要重启电脑完成环境变量设置等配置</em></p>
 <h3 id="2、新建工作目录，如："><a href="#2、新建工作目录，如：" class="headerlink" title="2、新建工作目录，如："></a>2、新建工作目录，如：</h3><pre><code>`D:VagrantWorkcentos-6.6-x86_64`
 </code></pre><h3 id="3、打开CMD命令行，进入新建工作目录"><a href="#3、打开CMD命令行，进入新建工作目录" class="headerlink" title="3、打开CMD命令行，进入新建工作目录"></a>3、打开CMD命令行，进入新建工作目录</h3><pre><code>` D:`
 `cd D:VagrantWorkcentos-6.6-x86_64`
@@ -335,7 +337,7 @@
 上面这句代码前面的#号去掉。它表示映射本机的8080端口到虚拟机的80端口
 </code></pre><h3 id="2、目录映射："><a href="#2、目录映射：" class="headerlink" title="2、目录映射："></a>2、目录映射：</h3><pre><code>config.vm.synced_folder &quot;D:/www&quot;, &quot;/var/www/html&quot;
 表示把本机的data目录共享到虚拟机里的/var/www目录
-</code></pre><h1 id="三、基本操作"><a href="#三、基本操作" class="headerlink" title="三、基本操作"></a>三、基本操作</h1><ol>
+</code></pre><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
 <li>启动<br><code>vagrant up</code></li>
 <li>关机<br><code>vagrant halt</code></li>
 <li>暂停<br><code>vagrant suspend</code></li>
@@ -349,7 +351,16 @@
 <li>DOS下vagrant ssh直接连接</li>
 <li>第三方终端模拟器连接（windows下支持）<br>``</li>
 </ul>
-<h1 id="四、问题BUG"><a href="#四、问题BUG" class="headerlink" title="四、问题BUG"></a>四、问题BUG</h1><p>1.<strong>行为</strong> ： vagrant up<br>  <strong>报错</strong> ： C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:85:in <code>block in windows_hyperv_admin?&#39;: undefined method</code>include?’ for #<vagrant::util::subprocess::result:0x2634e88> (NoMethodError)<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in <code>call&#39;
+<h1 id="安装Nginx-MySQL-PHP"><a href="#安装Nginx-MySQL-PHP" class="headerlink" title="安装Nginx+MySQL+PHP"></a>安装Nginx+MySQL+PHP</h1><h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><pre><code>sudo apt-get install nginx
+</code></pre><ol>
+<li>所有的配置文件都在/etc/init.d/nginx这个目录下</li>
+<li>修改默认配置文件<br> sudo vim /etc/nginx/sites-available/default<br> <img src="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221" alt="配置文件"><br>3.测试配置文件<br> sudo nginx -t<br>4.重载配置文件<br> sudo service nginx reload<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2>1.安装MySQL服务端<br> sudo apt-get install mysql-server<br><strong>然后你会看见输入密码的界面，你只需接下来输入管理员密码就行</strong><br>2.安装MySQL客户端<br> sudo apt-get install mysql-client<br>3.安装php5-fpm<br> sudo apt-get install php5-mysql<br>4.修改 mysql 的配置文件<br> sudo vim /etc/mysql/my.cnf<blockquote>
+<p>将 bind-address = 127.0.0.1 注释掉，就可以远程连接数据库了</p>
+</blockquote>
+</li>
+</ol>
+<p>5.查看MySQL状态<br>    sudo netstat -tap | grep mysql<br>6.启动MySQL<br>    sudo service mysql start</p>
+<h1 id="问题BUG"><a href="#问题BUG" class="headerlink" title="问题BUG"></a>问题BUG</h1><p>1.<strong>行为</strong> ： vagrant up<br>  <strong>报错</strong> ： C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:85:in <code>block in windows_hyperv_admin?&#39;: undefined method</code>include?’ for #<vagrant::util::subprocess::result:0x2634e88> (NoMethodError)<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in <code>call&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in</code>windows_hyperv_admin?’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/plugins/providers/hyperv/provider.rb:20:in <code>usable?&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:381:in</code>block in default_provider’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:379:in `each’<br><strong>解决</strong> ：造成此问题的原因可能是由于VirtualBox版本问题，最新的5.1可能会有此问题，建议安装5.0版 <a href="http://stackoverflow.com/questions/38181341/block-in-windows-hyperv-admin-error-when-trying-vagrant-up#" target="_blank" rel="external">解决方案</a></vagrant::util::subprocess::result:0x2634e88></p>
 
@@ -384,6 +395,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/09/ubuntu系统搭建LNMP环境/" rel="prev" title="Linux系统下安装PHP运行环境">
+                Linux系统下安装PHP运行环境 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -451,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -526,7 +541,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、资源下载"><span class="nav-number">1.</span> <span class="nav-text">一、资源下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）下载VirtualBox"><span class="nav-number">1.1.</span> <span class="nav-text">（一）下载VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）下载Vagrant"><span class="nav-number">1.2.</span> <span class="nav-text">（二）下载Vagrant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）下载系统镜像"><span class="nav-number">1.3.</span> <span class="nav-text">（三）下载系统镜像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、安装配置"><span class="nav-number">2.</span> <span class="nav-text">二、安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）安装"><span class="nav-number">2.1.</span> <span class="nav-text">（一）安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装VirtualBox-Vagrant"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、安装VirtualBox+Vagrant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、新建工作目录，如："><span class="nav-number">2.1.2.</span> <span class="nav-text">2、新建工作目录，如：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、打开CMD命令行，进入新建工作目录"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、打开CMD命令行，进入新建工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、初始化命令："><span class="nav-number">2.1.4.</span> <span class="nav-text">4、初始化命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、手动加载BOX"><span class="nav-number">2.1.5.</span> <span class="nav-text">5、手动加载BOX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、BOX列表（检查是否导入成功）："><span class="nav-number">2.1.6.</span> <span class="nav-text">6、BOX列表（检查是否导入成功）：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）配置"><span class="nav-number">2.2.</span> <span class="nav-text">（二）配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、端口映射："><span class="nav-number">2.2.1.</span> <span class="nav-text">1、端口映射：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、目录映射："><span class="nav-number">2.2.2.</span> <span class="nav-text">2、目录映射：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、基本操作"><span class="nav-number">3.</span> <span class="nav-text">三、基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、问题BUG"><span class="nav-number">4.</span> <span class="nav-text">四、问题BUG</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源下载"><span class="nav-number">1.</span> <span class="nav-text">资源下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）下载VirtualBox"><span class="nav-number">1.1.</span> <span class="nav-text">（一）下载VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）下载Vagrant"><span class="nav-number">1.2.</span> <span class="nav-text">（二）下载Vagrant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）下载系统镜像"><span class="nav-number">1.3.</span> <span class="nav-text">（三）下载系统镜像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">2.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）安装"><span class="nav-number">2.1.</span> <span class="nav-text">（一）安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装VirtualBox-Vagrant"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、安装VirtualBox+Vagrant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、新建工作目录，如："><span class="nav-number">2.1.2.</span> <span class="nav-text">2、新建工作目录，如：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、打开CMD命令行，进入新建工作目录"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、打开CMD命令行，进入新建工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、初始化命令："><span class="nav-number">2.1.4.</span> <span class="nav-text">4、初始化命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、手动加载BOX"><span class="nav-number">2.1.5.</span> <span class="nav-text">5、手动加载BOX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、BOX列表（检查是否导入成功）："><span class="nav-number">2.1.6.</span> <span class="nav-text">6、BOX列表（检查是否导入成功）：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）配置"><span class="nav-number">2.2.</span> <span class="nav-text">（二）配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、端口映射："><span class="nav-number">2.2.1.</span> <span class="nav-text">1、端口映射：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、目录映射："><span class="nav-number">2.2.2.</span> <span class="nav-text">2、目录映射：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作"><span class="nav-number">3.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Nginx-MySQL-PHP"><span class="nav-number">4.</span> <span class="nav-text">安装Nginx+MySQL+PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Nginx"><span class="nav-number">4.1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySQL"><span class="nav-number">4.2.</span> <span class="nav-text">安装MySQL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题BUG"><span class="nav-number">5.</span> <span class="nav-text">问题BUG</span></a></li></ol></div>
             
           </div>
         </section>
