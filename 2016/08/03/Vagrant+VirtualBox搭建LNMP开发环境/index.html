@@ -95,7 +95,7 @@
 
 经历过windows系统下WAMP等集成开发环境和VirtualBox虚拟机运行Linux系统开发之后，发现Vagrant+virtualbox搭建PHP运行环境是比较好的">
 <meta property="og:image" content="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221">
-<meta property="og:updated_time" content="2016-08-08T20:31:42.035Z">
+<meta property="og:updated_time" content="2016-08-09T13:41:55.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vagrant+VirtualBox搭建LNMP开发环境">
 <meta name="twitter:description" content="标签（空格分隔）： 工具
@@ -355,11 +355,10 @@
 </code></pre><ol>
 <li>所有的配置文件都在/etc/init.d/nginx这个目录下</li>
 <li>修改默认配置文件<br> sudo vim /etc/nginx/sites-available/default<br> <img src="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221" alt="配置文件"><br>3.测试配置文件<br> sudo nginx -t<br>4.重载配置文件<br> sudo service nginx reload<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2>1.安装MySQL服务端<br> sudo apt-get install mysql-server<br><strong>然后你会看见输入密码的界面，你只需接下来输入管理员密码就行</strong><br>2.安装MySQL客户端<br> sudo apt-get install mysql-client<br>3.安装php5-fpm<br> sudo apt-get install php5-mysql<br>4.修改 mysql 的配置文件<br> sudo vim /etc/mysql/my.cnf<blockquote>
-<p>将 bind-address = 127.0.0.1 注释掉，就可以远程连接数据库了</p>
+<p>将 bind-address = 127.0.0.1 注释掉，就可以远程连接数据库了<br>5.查看MySQL状态<br> sudo netstat -tap | grep mysql<br>6.启动MySQL<br> sudo service mysql start</p>
 </blockquote>
 </li>
 </ol>
-<p>5.查看MySQL状态<br>    sudo netstat -tap | grep mysql<br>6.启动MySQL<br>    sudo service mysql start</p>
 <h1 id="问题BUG"><a href="#问题BUG" class="headerlink" title="问题BUG"></a>问题BUG</h1><p>1.<strong>行为</strong> ： vagrant up<br>  <strong>报错</strong> ： C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:85:in <code>block in windows_hyperv_admin?&#39;: undefined method</code>include?’ for #<vagrant::util::subprocess::result:0x2634e88> (NoMethodError)<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in <code>call&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in</code>windows_hyperv_admin?’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/plugins/providers/hyperv/provider.rb:20:in <code>usable?&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:381:in</code>block in default_provider’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:379:in `each’<br><strong>解决</strong> ：造成此问题的原因可能是由于VirtualBox版本问题，最新的5.1可能会有此问题，建议安装5.0版 <a href="http://stackoverflow.com/questions/38181341/block-in-windows-hyperv-admin-error-when-trying-vagrant-up#" target="_blank" rel="external">解决方案</a></vagrant::util::subprocess::result:0x2634e88></p>
