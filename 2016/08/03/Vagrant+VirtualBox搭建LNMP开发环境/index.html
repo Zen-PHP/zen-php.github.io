@@ -95,7 +95,7 @@
 
 经历过windows系统下WAMP等集成开发环境和VirtualBox虚拟机运行Linux系统开发之后，发现Vagrant+virtualbox搭建PHP运行环境是比较好的">
 <meta property="og:image" content="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221">
-<meta property="og:updated_time" content="2016-08-09T17:11:54.146Z">
+<meta property="og:updated_time" content="2016-08-10T14:04:53.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vagrant+VirtualBox搭建LNMP开发环境">
 <meta name="twitter:description" content="标签（空格分隔）： 工具
@@ -351,32 +351,33 @@
 <li>DOS下vagrant ssh直接连接</li>
 <li>第三方终端模拟器连接（windows下支持）<br>``</li>
 </ul>
-<h1 id="安装Nginx-MySQL-PHP"><a href="#安装Nginx-MySQL-PHP" class="headerlink" title="安装Nginx+MySQL+PHP"></a>安装Nginx+MySQL+PHP</h1><h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><pre><code>sudo apt-get install nginx
+<h1 id="安装Nginx-MySQL-PHP"><a href="#安装Nginx-MySQL-PHP" class="headerlink" title="安装Nginx+MySQL+PHP"></a>安装Nginx+MySQL+PHP</h1><p><strong>apt方式安装Nginx+mysql+php</strong></p>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><pre><code>sudo apt-get install nginx
 </code></pre><ol>
 <li>所有的配置文件都在/etc/init.d/nginx这个目录下</li>
 <li>修改默认配置文件<br> sudo vim /etc/nginx/sites-available/default<br> <img src="https://dn-anything-about-doc.qbox.me/userid19824labid404time1421909940221" alt="配置文件"><br>3.测试配置文件<br> sudo nginx -t<br>4.重载配置文件<br> sudo service nginx reload<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2>1.安装MySQL服务端<br> sudo apt-get install mysql-server<br><strong>然后你会看见输入密码的界面，你只需接下来输入管理员密码就行</strong><br>2.安装MySQL客户端<br> sudo apt-get install mysql-client<br>3.安装php5-fpm<br> sudo apt-get install php5-mysql<br>4.修改 mysql 的配置文件<br> sudo vim /etc/mysql/my.cnf<blockquote>
-<p>将 bind-address = 127.0.0.1 注释掉，就可以远程连接数据库了<br>5.查看MySQL状态<br> sudo netstat -tap | grep mysql<br>6.启动MySQL<br> sudo service mysql start<br>7.Mysql服务器开启远程连接</p>
+<p>将 bind-address = 127.0.0.1 注释掉，就可以远程连接数据库了</p>
 </blockquote>
 </li>
 </ol>
+<p>5.查看MySQL状态<br>    sudo netstat -tap | grep mysql<br>6.启动MySQL<br>    sudo service mysql start<br>7.Mysql服务器开启远程连接</p>
 <ul>
-<li>开启对应账号的远程访问权限<br>  mysql -uroot -p<br>  use mysql;<br>  update user set host = ‘%’ where user = ‘root’;<br>  flush privileges;<br><em>如果在执行update的时候报错 “ERROR 1062 (23000): Duplicate entry ‘%-root’ for key ‘PRIMARY’”,解决方法如下</em>：<br>  delete from user where user = ‘root’ and host = ‘*’;</li>
+<li>开启对应账号的远程访问权限<br>  mysql -uroot -p<br>  use mysql;<br>  grant all privileges on <em>.</em> to ‘帐号’@’%’ identified by ‘密码’;<br>  flush privileges;<br><em>如果在执行update的时候报错 “ERROR 1062 (23000): Duplicate entry ‘%-root’ for key ‘PRIMARY’”,解决方法如下</em>：<br>  delete from user where user = ‘root’ and host = ‘*’;</li>
 <li>开启服务允许远程连接，编辑文件<br>  sudo vim /etc/mysql/my.cnf</li>
-<li>注释掉bind-address</li>
 <li>重启mysql服务</li>
 </ul>
 <ol>
-<li>SQLyog连接数据库<br><code>主机地址：vagrantfile里设置的IP</code><br><code>端口：3306</code></li>
+<li>SQLyog连接数据库<br><code>主机地址：vagrantfile里设置的IP</code><br><code>端口：3306</code><h2 id="配置虚拟主机域名"><a href="#配置虚拟主机域名" class="headerlink" title="配置虚拟主机域名"></a>配置虚拟主机域名</h2></li>
 </ol>
-<h2 id="配置虚拟主机域名"><a href="#配置虚拟主机域名" class="headerlink" title="配置虚拟主机域名"></a>配置虚拟主机域名</h2><ul>
+<ul>
 <li>编辑C:\Windows\System32\drivers\etc\hosts文件</li>
-<li>绑定Vagrant已有IP至虚拟主机域名</li>
+<li>绑定Vagrant已有IP至虚拟主机域名<h2 id="安装phpmyadmin"><a href="#安装phpmyadmin" class="headerlink" title="安装phpmyadmin"></a>安装phpmyadmin</h2>1.安装<br><code>sudo apt-get install phpmyadmin</code><br><strong>phpmyadmin默认安装在/usr/share/下，所以需要建立软链接</strong><br>2.建立软链接<br><code>sudo ln -s /usr/share/phpmyadmin phpmyadmin</code></li>
 </ul>
-<h2 id="安装phpmyadmin"><a href="#安装phpmyadmin" class="headerlink" title="安装phpmyadmin"></a>安装phpmyadmin</h2><p>1.安装<br><code>sudo apt-get install phpmyadmin</code><br><strong>phpmyadmin默认安装在/usr/share/下，所以需要建立软链接</strong><br>2.建立软链接<br><code>sudo ln -s /usr/share/phpmyadmin phpmyadmin</code></p>
 <h1 id="问题BUG"><a href="#问题BUG" class="headerlink" title="问题BUG"></a>问题BUG</h1><p>1.<strong>行为</strong> ： vagrant up<br>  <strong>报错</strong> ： C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:85:in <code>block in windows_hyperv_admin?&#39;: undefined method</code>include?’ for #<vagrant::util::subprocess::result:0x2634e88> (NoMethodError)<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in <code>call&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/util/platform.rb:89:in</code>windows_hyperv_admin?’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/plugins/providers/hyperv/provider.rb:20:in <code>usable?&#39;
         from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:381:in</code>block in default_provider’<br>        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.8.4/lib/vagrant/environment.rb:379:in `each’<br><strong>解决</strong> ：造成此问题的原因可能是由于VirtualBox版本问题，最新的5.1可能会有此问题，建议安装5.0版 <a href="http://stackoverflow.com/questions/38181341/block-in-windows-hyperv-admin-error-when-trying-vagrant-up#" target="_blank" rel="external">解决方案</a></vagrant::util::subprocess::result:0x2634e88></p>
 <p>2.卸载MySQL<br><code>sudo apt-get autoremove --purge mysql-server-5.0</code><br><code>sudo apt-get remove mysql-server</code><br><code>sudo apt-get autoremove mysql-server</code><br><code>sudo apt-get remove mysql-common</code><br><code>dpkg -l |grep ^rc|awk &#39;{print $2}&#39; |sudo xargs dpkg -P</code></p>
+<p>3.在修改my.cnf文件权限的时候，如果将权限修改为777，那么就意味着权限全局可写，任何一个用户都可以写，mysql担心这种文件被其他用户恶意修改，所以忽略掉这个配置文件这就会导致用户在关闭或者重启mysql的时候无法实施，进而报错.<br>解决：<code>sudo chmod -R 644 my.cnf</code></p>
 
       
     </div>
@@ -480,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
